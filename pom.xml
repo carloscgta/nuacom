@@ -102,7 +102,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <includes>
-                        <include>blockrage/rain/runner/LoginRunner.java</include>
+                        <include>nuacom/runner/LoginRunner.java</include>
                     </includes>
                     <parallel>all</parallel>
                     <threadCount>1</threadCount>

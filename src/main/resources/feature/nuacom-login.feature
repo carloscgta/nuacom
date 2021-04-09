@@ -12,9 +12,8 @@ Feature: Login at Nuacom
     And set the username "<email>"
     And set the Password "<password>"
     When Click in Login button
-    Then validate application login functinality
+    Then the application should not perform the login displaying the message "Login failed. Make sure you insert the right credentials, if you forgot them, then you can reset the password."
 
     Examples:
       |email                 |password   |
       |toma.igor.ie@gmail.com |toma.igor.ie@gmail.comA1|
-      |carlosta@gmail.com |Solrac@6879 |

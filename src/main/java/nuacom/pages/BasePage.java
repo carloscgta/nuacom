@@ -23,7 +23,7 @@ public class BasePage extends PageGenerator {
     WebDriverWait wait = new WebDriverWait(this.driver, 40);
 
     public <T> void click(T elementAttr) throws InterruptedException {
-
+        moverParaElemento(elementAttr);
         waitForElement(elementAttr);
         ((WebElement) elementAttr).click();
 
@@ -33,7 +33,7 @@ public class BasePage extends PageGenerator {
     // Wait generic method
 
     public <T> void waitForElement(T elementAttr) throws InterruptedException {
-        moverParaElemento(elementAttr);
+
         wait.until(ExpectedConditions. visibilityOf((WebElement) elementAttr));
 
         ((WebElement) elementAttr).isDisplayed();

@@ -11,6 +11,8 @@ public class LoginPage extends BasePage{
         super(driver);
     }
 
+//https://www.baeldung.com/java-selenium-webdriver-cookies
+
     @FindBy(how = How.XPATH, using = "(//a[@href='//app.nuacom.ie/login/'])[1]")
     public WebElement linkLogin;
 
@@ -26,10 +28,19 @@ public class LoginPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//*[@id='login_form_submit']")
     public WebElement linkLoggedSession;
 
-
-
     @FindBy(how = How.XPATH, using = "//*[@id='onetrust-accept-btn-handler']")
     public WebElement ButtoncookiePopup;
+
+
+    @FindBy(how = How.XPATH, using = "//div[@class='login_error text-danger']")
+    public WebElement erroMessageFailedLogin;
+
+    public boolean validateInvalidLogin() throws InterruptedException {
+
+        if(elementIsDisplayed(erroMessageFailedLogin))
+            return true;
+        return false;
+    }
 
 
 
@@ -49,10 +60,12 @@ public class LoginPage extends BasePage{
 
             click(linkLogin);
 
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
 
     public void writeUserNameNuacom(String username)  {
 
@@ -77,6 +90,7 @@ public class LoginPage extends BasePage{
     public void clickLoginButtonNuacom()  {
         try {
             click(buttonLogin);
+            waitForElement(erroMessageFailedLogin);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -92,6 +106,10 @@ public class LoginPage extends BasePage{
         }
         return false;
     }
+
+
+
+
 
 
 
